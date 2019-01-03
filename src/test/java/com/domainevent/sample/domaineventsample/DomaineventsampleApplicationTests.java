@@ -26,11 +26,11 @@ public class DomaineventsampleApplicationTests {
 	public void testDomainEvents() {
 		//Given an aggregate
 		AggregateExample agg = AggregateExample.builder().id(UUID.randomUUID().toString())
-												.status("Newly Created")
+												.status("Newly Createdd")
 												.build();
-		
+		repo.save(agg);
 		//When the status is changed
-		agg.changeStatus("Updated");
+		agg.changeStatus("Updatedd");
 		assertEquals(1,agg.getDomainEventsSize());
 		repo.save(agg);
 		
