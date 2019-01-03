@@ -25,10 +25,9 @@ public class AggregateExample extends AbstractAggregateRoot<AggregateExample>{
 	private static final Logger LOG = LoggerFactory.getLogger(AggregateExample.class);
 	
 	@Id
-	private String id;
+	private Long id;
 	private String status;
 	
-
 	public void changeStatus(String status) {
 		String oldStatus = this.status;
 		this.status = status;
@@ -39,18 +38,7 @@ public class AggregateExample extends AbstractAggregateRoot<AggregateExample>{
 														.build());
 	}
 	
-	@DomainEvents
-	public void returnEvents() {
-		Collection events =  super.domainEvents();
-		for(Object event: events) {
-			StatusChangedEvent e = (StatusChangedEvent) event;
-			LOG.info("Id: " + e.getAggregateId() 
-			+ "\nOldStatus: " + e.getOldStatus()
-			+ "\nNewStatus: " + e.getNewStatus());
-		}
-	}
-	
-	public int getDomainEventsSize() {
+	public int obtainDomainEventsSize() {
 		return super.domainEvents().size();
 	}
 	

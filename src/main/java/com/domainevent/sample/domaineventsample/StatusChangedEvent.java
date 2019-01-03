@@ -1,5 +1,7 @@
 package com.domainevent.sample.domaineventsample;
 
+import javax.persistence.Entity;
+
 import lombok.Builder;
 import lombok.Value;
 
@@ -7,9 +9,8 @@ import lombok.Value;
 @Builder
 public class StatusChangedEvent {
 
-	private String aggregateId;
+	private Long aggregateId;
 	private String oldStatus;
 	private String newStatus;
-	
-	
+		
 }
