@@ -20,7 +20,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class AggregateExample extends AbstractAggregateRoot<AggregateExample>{
+public class AggregateExample extends AbstractAggregateRoot{
 	
 	private static final Logger LOG = LoggerFactory.getLogger(AggregateExample.class);
 	

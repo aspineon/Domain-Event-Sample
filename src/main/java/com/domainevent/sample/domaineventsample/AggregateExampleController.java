@@ -22,7 +22,7 @@ public class AggregateExampleController {
 	
 	@PutMapping("/aggregates/{id}") 
 	AggregateExample updateAggregate(@RequestBody AggregateExample aggregate, @PathVariable Long id){
-		AggregateExample agg = repo.findById(id).get();
+		AggregateExample agg = repo.findOne(id);
 		agg.changeStatus(aggregate.getStatus());
 		return repo.save(agg);
 	}
