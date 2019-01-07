@@ -32,7 +32,7 @@ public class PostgresqlEventHandler {
 
         try {
             LOG.info(objectMapper.writeValueAsString(e));
-            template.update("INSERT INTO jsonevents(val) VALUES (to_json(?::json))", objectMapper.writeValueAsString(e));
+            template.update("INSERT INTO events(data) VALUES (to_json(?::json))", objectMapper.writeValueAsString(e));
 
         } catch (JsonProcessingException e1) {
             // TODO Auto-generated catch block
