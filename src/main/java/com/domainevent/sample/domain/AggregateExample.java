@@ -8,7 +8,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.data.domain.AbstractAggregateRoot;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -18,7 +17,7 @@ import javax.persistence.Id;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class AggregateExample extends AbstractAggregateRoot<AggregateExample> {
+public class AggregateExample extends AbstractAggregateRoot {
 
     private static final Logger LOG = LoggerFactory.getLogger(AggregateExample.class);
 
@@ -35,10 +34,5 @@ public class AggregateExample extends AbstractAggregateRoot<AggregateExample> {
                 .newStatus(status)
                 .build());
     }
-
-    public int obtainDomainEventsSize() {
-        return super.domainEvents().size();
-    }
-
 
 }
