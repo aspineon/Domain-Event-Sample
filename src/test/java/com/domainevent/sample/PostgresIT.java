@@ -37,11 +37,11 @@ public class PostgresIT {
         repo.save(agg);
         //When the status is changed
         agg.changeStatus("Updated");
-        assertEquals(1, agg.obtainDomainEventsSize());
+        assertEquals(1, agg.domainEvents().size());
         repo.save(agg);
 
         //Then domain events have been published
-        assertEquals(0, agg.obtainDomainEventsSize());
+        assertEquals(0, agg.domainEvents().size());
         // TODO assert that events are stored in db
 
     }
