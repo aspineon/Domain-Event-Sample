@@ -1,7 +1,7 @@
-package com.domainevent.sample.domaineventsample;
+package com.domainevent.sample.rest;
 
-import java.util.Optional;
-
+import com.domainevent.sample.domain.AggregateExample;
+import com.domainevent.sample.domain.repositories.AggregateExampleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
