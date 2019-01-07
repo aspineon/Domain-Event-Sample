@@ -1,24 +1,13 @@
 package com.domainevent.sample.domain.events;
 
-import lombok.*;
-
-import java.time.Instant;
+import lombok.Builder;
+import lombok.Value;
 
 @Value
 @Builder
-public class StatusChangedEvent implements DomainEvent {
-
-    @Getter(AccessLevel.NONE)
-    @Setter(AccessLevel.NONE)
-    private final Instant occurredOn = Instant.now();
+public class StatusChangedEvent extends BaseDomainEvent {
 
     private Long aggregateId;
     private String oldStatus;
     private String newStatus;
-
-
-    @Override
-    public Instant occurredOn() {
-        return occurredOn;
-    }
 }
