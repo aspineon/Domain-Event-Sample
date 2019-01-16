@@ -95,7 +95,7 @@ oc exec -c kafka -i my-cluster-kafka-0 -- curl -s  -w "\n" -X POST \
 EOF
 ```
 
-#### 6. Consume the events published to Kafka
+#### 6. Consume the events published to Kafka using basic shell script.
 
 This is a basic consumer that ships with Kafka:
 
@@ -108,6 +108,10 @@ oc exec -c zookeeper -it my-cluster-zookeeper-0 -- /opt/kafka/bin/kafka-console-
 ```
 
 You should now be able to see a stream of changes that have occurred to the events table. Continue to make updates to an aggregate and new changes will appear.
+
+#### 7. Consume the events using Camel (https://github.com/haithamshahin333/Camel-Kafka-Consumer).
+
+Clone the repo and run `mvn clean install -DskipTests` to get the app deployed to openshift
 
 ## References
 
