@@ -1,5 +1,6 @@
 package com.domainevent.sample.db;
 
+import com.domainevent.sample.domain.events.DomainEvent;
 import com.domainevent.sample.domain.events.StatusChangedEvent;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -25,11 +26,7 @@ public class PostgresqlEventHandler {
     private JdbcTemplate template;
 
     @TransactionalEventListener
-    public void handleEvent(StatusChangedEvent e) {
-        LOG.info("Id: " + e.getAggregateId()
-                + "\nOldStatus: " + e.getOldStatus()
-                + "\nNewStatus: " + e.getNewStatus());
-
+    public void handleEvent(DomainEvent e) {
         try {
             LOG.info(objectMapper.writeValueAsString(e));
             template.update("INSERT INTO events(data) VALUES (to_json(?::json))", objectMapper.writeValueAsString(e));

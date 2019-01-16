@@ -26,10 +26,25 @@ public class PostgresIT {
     public void contextLoads() {
 
     }
+    
+    @Test
+    public void testDomainEventsArePublishedForNewAggregateCreation() {
+        //Given an aggregate
+        AggregateExample agg = AggregateExample.createNewAggregate(1L, "new aggregate");
+        assertEquals(1, agg.domainEvents().size());
+        
+        //When the status is changed
+        repo.save(agg);
+
+        //Then domain events have been published
+        assertEquals(0, agg.domainEvents().size());
+        // TODO assert that events are stored in db
+
+    }
 
 
     @Test
-    public void testDomainEvents() {
+    public void testDomainEventsArePublishedForStatusChangedEvent() {
         //Given an aggregate
         AggregateExample agg = AggregateExample.builder().id(1L)
                 .status("Newly Createdd")
